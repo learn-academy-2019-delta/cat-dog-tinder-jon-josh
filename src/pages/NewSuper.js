@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Redirect } from 'react-router'
 
 export default class NewSuper extends Component{
     constructor(props){
@@ -73,7 +74,9 @@ export default class NewSuper extends Component{
       </Button>
 
       </Form>
-
+      {this.props.success &&
+      <Redirect to="/pages/Superheroes" />
+      }
 
 
             </div>

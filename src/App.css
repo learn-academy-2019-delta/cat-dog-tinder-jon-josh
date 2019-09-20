@@ -570,6 +570,7 @@ pre code {
   margin-left: auto;
 }
 
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -6921,13 +6922,18 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #555 !important;
+  background-color: #11de0d !important;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
   background-color: #3c3b3b !important;
+}
+
+img {
+    width: 100%;
+    height: auto;
 }
 
 .bg-success {
@@ -10251,6 +10257,7 @@ button.bg-dark:focus {
 
 .text-justify {
   text-align: justify !important;
+  color: #3366ff;
 }
 
 .text-wrap {
@@ -10363,9 +10370,13 @@ button.bg-dark:focus {
   font-style: italic !important;
 }
 
-.text-white {
-  color: #fff !important;
+.text-blue {
+  color: #3366ff !important;
 }
+.text-red {
+  color: #b01405 !important;
+}
+
 
 .text-primary {
   color: #333 !important;

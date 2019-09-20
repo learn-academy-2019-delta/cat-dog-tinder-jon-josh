@@ -5,38 +5,52 @@ import { BrowserRouter as Router,
          Route} from 'react-router-dom';
 import SuperHeroes from './pages/Superheroes';
 import NewSuper from './pages/NewSuper';
-import Nav from 'react-bootstrap/Nav'
-import flash from './images/flash.jpg';
-import wolverine from './images/wolverine.png';
-import wonder from './images/wonder.jpg';
+import Nav from 'react-bootstrap/Nav';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import { getSuperhero, createSuperhero, deleteSuperhero } from './api'
+import banner from './images/superherobanner.jpg'
+import Image from 'react-bootstrap/Image'
+
 class App extends React.Component{
     constructor(props){
         super(props)
         this.state ={
-            superheroes: [
-                {id: 1,
-                img: flash,
-                name: "Flash",
-                age: 24,
-                enjoys: "Quick strolls around the world."
-            },
-            {   id: 2,
-                img: wolverine,
-                name: "Wolverine",
-                age: 82,
-                enjoys: "Getting drunk.",
-            },
-            {   id: 3,
-                img: wonder,
-                name: "Wonder Woman",
-                age: 99,
-                enjoys: "Flying her invisible jet."
-            },
-            ]
+            success: false,
+            superheroes: []
         }
     }
+    componentDidMount() {
+      getSuperhero()
+       .then(APIsuperheros => {
+         this.setState({
+             superheroes: APIsuperheros
+         })
+       })
+    }
 
+    handleNewSuperhero =(newSuperheroInfo)=>{
+        createSuperhero(newSuperheroInfo)
+        .then(successSuperhero => {
+            this.setState({
+                success: true
+            })
+            getSuperhero()
+            .then(successSuperhero =>{
+                this.setState({
+                    superheroes: successSuperhero
+                })
+            })
+            console.log("SUCCESS! New superhero: ", successSuperhero);
+        })
+    }
 
+    deleteNewSuperhero = (delSuperheroInfo)=>{
+        deleteSuperhero(delSuperheroInfo)
+        .then(deleteSuper => {
+            console.log(deleteSuper)
+            this.setState({superheroes: deleteSuper})
+        })
+    }
 
     handleNewSuper = (form) =>{
         console.log(form);
@@ -53,11 +67,15 @@ class App extends React.Component{
                         <Nav.Link href="/pages/NewSuper">New Super Heroes</Nav.Link>
                     </Nav.Item>
                 </Nav>
+                <Image src={banner}>
+                </Image>
                 <Router>
                     <Switch>
-                        <Route exact path="/pages/Superheroes" render={(props)=> <SuperHeroes superheroes={this.state.superheroes}/> } />
+                        <Route exact path="/pages/Superheroes" render={(props)=> <SuperHeroes
+                         delSuper={this.deleteNewSuperhero}
+                         superheroes={this.state.superheroes}/> } />
                         <Route exact path='/pages/NewSuper' render={(props) => <NewSuper
-                        newSuper={this.handleNewSuper}/> } />
+                        newSuper={this.handleNewSuperhero} success={this.state.success}/> } />
                     </Switch>
                 </Router>
             </div>
