@@ -6922,7 +6922,7 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #11de0d !important;
+  background-color: #5a6e5d !important;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
@@ -7162,6 +7162,11 @@ button.bg-dark:focus {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
+}
+
+.d-flexbox1{
+    display: flex;
+    justify-content: center;
 }
 
 .d-inline-flex {

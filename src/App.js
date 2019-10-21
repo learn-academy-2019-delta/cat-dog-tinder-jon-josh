@@ -7,9 +7,12 @@ import SuperHeroes from './pages/Superheroes';
 import NewSuper from './pages/NewSuper';
 import Nav from 'react-bootstrap/Nav';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import { getSuperhero, createSuperhero, deleteSuperhero } from './api'
-import banner from './images/superherobanner.jpg'
-import Image from 'react-bootstrap/Image'
+import { getSuperhero, createSuperhero, deleteSuperhero } from './api';
+import banner from './images/superherobanner.jpg';
+import Image from 'react-bootstrap/Image';
+import PropTypes from "prop-types";
+import ActiveStorageProvider from 'react-activestorage-provider';
+import User from './user';
 
 class App extends React.Component{
     constructor(props){
@@ -27,6 +30,10 @@ class App extends React.Component{
          })
        })
     }
+    // 
+    // handleSubmit = (User => {
+    //     path '/users/${this.state.user.id}'
+    // })
 
     handleNewSuperhero =(newSuperheroInfo)=>{
         createSuperhero(newSuperheroInfo)

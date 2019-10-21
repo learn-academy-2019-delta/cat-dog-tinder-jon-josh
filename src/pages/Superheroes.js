@@ -11,10 +11,10 @@ export default class SuperHeroes extends Component{
     render(){
         return(
             <div>
-            <Row >
+            <Row style={{display:"flex", justifyContent:"center"}}>
             {this.props.superheroes.map((superheroes, index)=>{
             return (
-            <Card style={{ width: '15rem' }}>
+            <Card class="" style={{ width: '40rem' }}>
               <Card.Img variant="top" src={superheroes.img} />
               <Card.Body>
                 <Card.Title class="text-red">{superheroes.name}</Card.Title>
