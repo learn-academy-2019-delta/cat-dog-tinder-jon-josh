@@ -136,7 +136,7 @@ GEM
       core_docs (>= 0.9.4)
       irbtools (>= 2.2, < 4.0)
       looksee (~> 4.1)
-    jmespath (1.4.0)
+    jmespath (1.6.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
